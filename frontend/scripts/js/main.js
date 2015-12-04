@@ -27,14 +27,12 @@ var texture;
 var fbMaterial;
 var origTex = THREE.ImageUtils.loadTexture("assets/textures/test.jpg");
 origTex.minFilter = origTex.magFilter = THREE.LinearFilter;
-var nextEffectsSelector = document.getElementById("nextEffectsSelector");
-var currentEffectsSelector = document.getElementById("effectsSelector");
-var uploadButton = document.getElementById("upload-button");
-var infoButton = document.getElementById("info-button");
-var exitButton = document.getElementById("exit-button");
-var icons = document.getElementById("icons");
-var instructions = document.getElementById("instructions");
-var finalPage = document.getElementById("finalPage");
+var uploadButton = document.getElementById("BB-upload-button");
+var infoButton = document.getElementById("BB-info-button");
+var exitButton = document.getElementById("BB-exit-button");
+var icons = document.getElementById("BB-icons");
+var instructions = document.getElementById("BB-instructions");
+var finalPage = document.getElementById("BB-finalPage");
 var infoCounter = 0;
 var audio = new Audio();
 audio.src = "assets/audio/Plasma_Lotus.mp3";
@@ -53,7 +51,7 @@ function init(){
 	renderer.setClearColor(0xffffff,1.0);
 
 
-	container = document.getElementById( 'container' );
+	container = document.getElementById( 'BB-container' );
 	container.appendChild(renderer.domElement);
 
 	createEffect();
@@ -73,6 +71,12 @@ function init(){
 	uploadButton.addEventListener("click", upload);
 	infoButton.addEventListener("click", exitInfo);
 	exitButton.addEventListener("click", exitInfo);
+	uploadButton.addEventListener("touchstart", upload);
+	uploadButton.addEventListener("touchdown", upload);
+	infoButton.addEventListener("touchstart", exitInfo);
+	infoButton.addEventListener("touchdown", exitInfo);
+	exitButton.addEventListener("touchstart", exitInfo);
+	exitButton.addEventListener("touchdown", exitInfo);
 	// document.addEventListener("keydown", onKeyDown);
 	animate();
 
@@ -192,7 +196,7 @@ function draw(){
 	} else {
 		audio.volume += (0.0 - audio.volume)*0.01;
 		// audio.pause();
-		finalPage.className = "visible";
+		finalPage.className = "BB-visible";
 
 	}
 	fbMaterial.setUniforms();
@@ -203,11 +207,11 @@ function draw(){
 }
 function exitInfo(){
 	if(infoCounter%2 == 0){
-		icons.className = "hidden";
-		instructions.className = "visible";
+		icons.className = "BB-hidden";
+		instructions.className = "BB-visible";
 	} else {
-		icons.className = "visible";
-		instructions.className = "hidden";
+		icons.className = "BB-visible";
+		instructions.className = "BB-hidden";
 	}
 	infoCounter++;
 }

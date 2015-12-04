@@ -12,7 +12,7 @@
 			text-align:center;
 			/*overflow: hidden;*/
 		}
-		#selectors{
+		#BB-selectors{
 			position: absolute;
 			top: 0;
 			/*margin: 5px;*/
@@ -23,7 +23,7 @@
 			display: block;
 			margin: 5px 0;
 		}
-		#instructions, #icons, #finalPage{
+		#BB-instructions, #BB-icons, #BB-finalPage{
 			/*z-index: 1;*/
 			position: fixed;
 			top: 0;
@@ -35,21 +35,21 @@
 			font-family: "HelveticaNeue-Light"
 
 		}
-		#instructions, #finalPage{
+		#BB-instructions, #BB-finalPage{
 			/*display: none;*/
 			background: rgba(0,0,0,0.75);
 		}
-		#exit-button, #info-button, #upload-button{
+		#BB-exit-button, #BB-info-button, #BB-upload-button{
 			position: absolute;
 			right: 0;
 			margin: 20px;
 			font-size: 48px;
 			cursor: pointer;
 		}
-		#upload-button{
+		#BB-upload-button{
 			bottom: 0;
 		}
-		.instructions-content{
+		.BB-instructions-content{
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -59,19 +59,19 @@
 			     -o-transform: translate(-50%, -50%);
 			        transform: translate(-50%, -50%);
 		}
-		h1, h3{
+		.BB-h1, .BB-h3{
 			font-weight: normal;
 		}
-		.instruction{
+		.BB-instruction{
 			display: inline-block;
 			/*width: 20%;*/
 		}
-		.visible {
+		.BB-visible {
 		  visibility: visible;
 		  opacity: 1;
 		  transition: opacity 1s linear;
 		}
-		.hidden {
+		.BB-hidden {
 		  visibility: hidden;
 		  opacity: 0;
 		  transition: visibility 0s 1s, opacity 1s linear;
@@ -82,45 +82,45 @@
 </head>
 <body>
 	<!-- <div class="focal-point portrait left-2 up-4"> -->
-	<div id="icons" class="visible">
-		<div id="info-button"><i class="pe-7s-info"></i></div>
-		<div id="upload-button"><i class="pe-7s-upload"></i></div>
+	<div id="BB-icons" class="BB-visible">
+		<div id="BB-info-button"><i class="pe-7s-info"></i></div>
+		<div id="BB-upload-button"><i class="pe-7s-upload"></i></div>
 	</div>
-	<div id="instructions" class="hidden">
-		<div id="exit-button"><i class="pe-7s-close"></i></div>
-		<div class="instructions-content">
-			<h1>HOW TO INTERACT</h1>
+	<div id="BB-instructions" class="BB-hidden">
+		<div id="BB-exit-button"><i class="pe-7s-close"></i></div>
+		<div class="BB-instructions-content">
+			<class="BB-h1" h1>HOW TO INTERACT</h1>
 			<p>Catium medies aut inclutemus huitissi iam tatum vissendit.</br>roximus cera o perfecu ppliciv atiaet; hi, viu quam dici.</p>
-			<div class="instruction">
-				<h3>CLICK &amp; HOLD</h3>
+			<div class="BB-instruction">
+				<h3 class="BB-h3">CLICK &amp; HOLD</h3>
 				<i></i>
 				<p>Catium medies itemus</br>perfecu ppliciv</p>
 			</div>
-			<div class="instruction">
-				<h3>CLICK, HOLD, &amp; DRAG</h3>
+			<div class="BB-instruction">
+				<h3 class="BB-h3">CLICK, HOLD, &amp; DRAG</h3>
 				<i></i>
 				<p>Catium medies itemus</br>perfecu ppliciv</p>
 			</div>
-			<div class="instruction">
-				<h3>SOUND</h3>
+			<div class="BB-instruction">
+				<h3 class="BB-h3">SOUND</h3>
 				<i></i>
 				<p>Catium medies itemus</br>perfecu ppliciv</p>
 			</div>
-			<div class="instruction">
-				<h3>FINISH &amp; UPLOAD</h3>
+			<div class="BB-instruction">
+				<h3 class="BB-h3">FINISH &amp; UPLOAD</h3>
 				<i></i>
 				<p>Catium medies itemus</br>perfecu ppliciv</p>
 			</div>
 		</div>
 	</div>
-	<div id="finalPage" class="hidden">
+	<div id="BB-finalPage" class="BB-hidden">
 		<div style="position:absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%);
 			   -moz-transform: translate(-50%, -50%);
 			    -ms-transform: translate(-50%, -50%);
 			     -o-transform: translate(-50%, -50%);
-			        transform: translate(-50%, -50%);"><h1>INTERACTION FINISHED</h1></div>
+			        transform: translate(-50%, -50%);"><class="BB-h1" h1>INTERACTION FINISHED</h1></div>
 	</div>
-	<div id="container"></div>		
+	<div id="BB-container"></div>		
 	<!-- </div> -->
 	<script src="scripts/js/three.min.js"></script>
 	<script src="scripts/js/CustomShaders2.js"></script>
