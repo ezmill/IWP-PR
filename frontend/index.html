@@ -24,7 +24,7 @@
 			display: block;
 			margin: 5px 0;
 		}
-		#instructions, #icons{
+		#instructions, #icons, #finalPage{
 			/*z-index: 1;*/
 			position: fixed;
 			top: 0;
@@ -36,7 +36,7 @@
 			font-family: "HelveticaNeue-Light"
 
 		}
-		#instructions{
+		#instructions, #finalPage{
 			/*display: none;*/
 			background: rgba(0,0,0,0.75);
 		}
@@ -114,8 +114,12 @@
 			</div>
 		</div>
 	</div>
-	<div id="uploading" class="hidden">
-		
+	<div id="finalPage" class="hidden">
+		<div style="position:absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%);
+			   -moz-transform: translate(-50%, -50%);
+			    -ms-transform: translate(-50%, -50%);
+			     -o-transform: translate(-50%, -50%);
+			        transform: translate(-50%, -50%);"><h1>INTERACTION FINISHED</h1></div>
 	</div>
 	<div id="container"></div>		
 	<!-- </div> -->

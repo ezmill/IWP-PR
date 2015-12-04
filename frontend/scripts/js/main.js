@@ -34,6 +34,7 @@ var infoButton = document.getElementById("info-button");
 var exitButton = document.getElementById("exit-button");
 var icons = document.getElementById("icons");
 var instructions = document.getElementById("instructions");
+var finalPage = document.getElementById("finalPage");
 var infoCounter = 0;
 var audio = new Audio();
 audio.src = "assets/audio/Plasma_Lotus.mp3";
@@ -191,6 +192,8 @@ function draw(){
 	} else {
 		audio.volume += (0.0 - audio.volume)*0.01;
 		// audio.pause();
+		finalPage.className = "visible";
+
 	}
 	fbMaterial.setUniforms();
     fbMaterial.update();
