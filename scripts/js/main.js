@@ -91,6 +91,7 @@ function animate(){
 }
 
 function onMouseMove(event){
+	mouseDown = true;
 	if(effect.useMask){
 		mask.mouse = new THREE.Vector2(event.pageX, event.pageY);		
 	}
@@ -101,7 +102,7 @@ function onMouseDown(){
 	mouseDown = true;
 }
 function onMouseUp(){
-	mouseDown = false;
+	mouseDown = true;
 	r2 = 0;
 }
 function onDocumentTouchStart( event ) {
