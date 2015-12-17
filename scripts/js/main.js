@@ -47,7 +47,7 @@ function init(){
 	material = new THREE.MeshBasicMaterial({
 		map: THREE.ImageUtils.loadTexture("assets/textures/test.jpg")
 	})
-	material.map.minFilter = material.map.magFilter = THREE.LinearFilter;
+	// material.map.minFilter = material.map.magFilter = THREE.LinearFilter;
 
 	mesh = new THREE.Mesh(geometry, material);
 	scene.add(mesh);
