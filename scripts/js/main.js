@@ -73,6 +73,8 @@ function init(){
 	window.addEventListener("resize", onWindowResize);
 	// document.addEventListener("keydown", onKeyDown);
 	console.log("W: " + renderSize.x + ", H: " +  renderSize.y);
+	renderer.domElement.style.width = window.innerWidth;
+	renderer.domElement.style.height = 2500*(window.innerWidth/3750);
 	animate();
 
 }
