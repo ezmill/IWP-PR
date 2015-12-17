@@ -1,6 +1,7 @@
 var container;
 var scene, camera, light, renderer;
-var renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
+// var renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
+var renderSize = new THREE.Vector2(3750, 2500);
 // var renderSize = new THREE.Vector2(window.innerWidth, window.innerHeight);
 // if(window.innerWidth>3750*(window.innerHeight/2500)){
     // renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
