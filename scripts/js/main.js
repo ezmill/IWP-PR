@@ -1,6 +1,11 @@
 var container;
 var scene, camera, light, renderer;
 var renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
+if(window.innerWidth>3750*(window.innerHeight/2500)){
+    renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
+} else {
+    renderSize = new THREE.Vector2(3750*(window.innerHeight/2500), window.innerHeight);
+}       
 // var renderSize = new THREE.Vector2(window.innerWidth*0.25, 2500*(window.innerWidth*0.25/3750));
 // var renderSize = new THREE.Vector2(3750, 2500);
 var mouse = new THREE.Vector2(0.0,0.0);
@@ -132,8 +137,12 @@ function onDocumentTouchEnd( event ) {
 	r2 = 0;
 }
 function onWindowResize( event ) {
-    renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
-    renderer.setSize( renderSize.x, renderSize.y );
+	if(window.innerWidth>3750*(window.innerHeight/2500)){
+	    renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
+	} else {
+	    renderSize = new THREE.Vector2(3750*(window.innerHeight/2500), window.innerHeight);
+	}       
+	renderer.setSize( renderSize.x, renderSize.y );
     camera.left = renderSize.x / - 2;
     camera.right = renderSize.x / 2;
     camera.top = renderSize.y / 2;
