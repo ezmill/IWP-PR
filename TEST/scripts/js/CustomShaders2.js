@@ -941,7 +941,7 @@ var CustomShaders = function(){
 			    "	vec4 alpha = texture2D(alpha, vUv);",
 			    "	vec4 mask = texture2D(mask, vUv);",
 			    "	vec3 col = texture2D(texture, vUv).rgb;",
-			    "	if(dot(mask.rgb, vec3(1.0))/3.0 < 0.00001){",
+			    "	if(dot(alpha.rgb, vec3(1.0))/3.0 > 0.00001){",
 			    "   	col = mix( col, rgb, dot(alpha.rgb, vec3(1.0))/3.0);",
 			    "	}",
 

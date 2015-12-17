@@ -16,6 +16,8 @@ function Mask(){
 		this.renderer.setSize( renderSize.x, renderSize.y );
 		this.renderer.setClearColor(0xffffff,1.0);
 		this.renderer.autoClearColor = false;
+		// container.appendChild(this.renderer.domElement);
+
 
 		this.geometry = new THREE.PlaneBufferGeometry(renderSize.x, renderSize.y);
 		this.shader = new MaskShader();

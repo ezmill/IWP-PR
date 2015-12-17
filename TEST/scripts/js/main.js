@@ -170,6 +170,7 @@ function animate(){
 }
 
 function onMouseMove(event){
+	mouseDown = true;
 	mouse.x = ( event.pageX / renderSize.x ) * 2 - 1;
     mouse.y = - ( event.pageY / renderSize.y ) * 2 + 1;
     // if(effect.useMask){
@@ -185,7 +186,7 @@ function onMouseDown(){
 	}
 }
 function onMouseUp(){
-	mouseDown = false;
+	mouseDown = true;
 	r2 = 0;
 	// setTimeout(createNewEffect, 1000);
 	// createNewEffect(false);
