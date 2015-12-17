@@ -61,7 +61,7 @@ function FeedbackMaterial(RENDERER, SCENE, CAMERA, TEXTURE, SHADERS){
         // this.setUniforms();
            // this.update();
 
-           this.fbos[0].material.uniforms.texture.value = this.fbos[1].renderTarget; 
+           // this.fbos[0].material.uniforms.texture.value = this.fbos[1].renderTarget; 
            // this.getNewFrame();
 
     }
