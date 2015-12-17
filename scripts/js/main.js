@@ -1,7 +1,7 @@
 var container;
 var scene, camera, light, renderer;
-// var renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
-var renderSize = new THREE.Vector2(window.innerWidth, window.innerHeight);
+var renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
+// var renderSize = new THREE.Vector2(window.innerWidth, window.innerHeight);
 // if(window.innerWidth>3750*(window.innerHeight/2500)){
     // renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
 // } else {
@@ -43,7 +43,15 @@ function init(){
 	container = document.getElementById( 'container' );
 	container.appendChild(renderer.domElement);
 
-	createEffect();
+	geometry = new THREE.PlaneBufferGeometry(renderSize.x, renderSize.y);
+	material = new THREE.MeshBasicMaterial({
+		map: THREE.ImageUtils.loadTexture("assets/textures/test.jpg")
+	})
+	material.map.minFilter = material.map.magFilter = THREE.LinearFilter;
+
+	mesh = new THREE.Mesh(geometry, material);
+	scene.add(mesh);
+	// createEffect();
 
 	document.addEventListener("mousemove", onMouseMove);
 	document.addEventListener("mousedown", onMouseDown);
@@ -97,9 +105,9 @@ function animate(){
 
 function onMouseMove(event){
 	mouseDown = true;
-	if(effect.useMask){
-		mask.mouse = new THREE.Vector2(event.pageX, event.pageY);		
-	}
+	// if(effect.useMask){
+		// mask.mouse = new THREE.Vector2(event.pageX, event.pageY);		
+	// }
 	mouse.x = ( event.pageX / renderSize.x ) * 2 - 1;
     mouse.y = - ( event.pageY / renderSize.y ) * 2 + 1;
 }
@@ -123,9 +131,9 @@ function onDocumentTouchMove( event ) {
 function updateMouse(event){
     if ( event.touches.length === 1 ) {
         event.preventDefault();
-        if(effect.useMask){
-			mask.mouse = new THREE.Vector2(event.touches[ 0 ].pageX, event.touches[ 0 ].pageY);		
-		}
+        // if(effect.useMask){
+			// mask.mouse = new THREE.Vector2(event.touches[ 0 ].pageX, event.touches[ 0 ].pageY);		
+		// }
 		mouse.x = ( event.touches[ 0 ].pageX / renderSize.x ) * 2 - 1;
 	    mouse.y = - ( event.touches[ 0 ].pageY / renderSize.y ) * 2 + 1;
     }
@@ -141,15 +149,15 @@ function onWindowResize( event ) {
 	// } else {
 	    // renderSize = new THREE.Vector2(3750*(window.innerHeight/2500), window.innerHeight);
 	// }      
-	renderSize = new THREE.Vector2(window.innerWidth, window.innerHeight); 
+	renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
 	renderer.setSize( renderSize.x, renderSize.y );
     camera.left = renderSize.x / - 2;
     camera.right = renderSize.x / 2;
     camera.top = renderSize.y / 2;
     camera.bottom = renderSize.y / - 2;
-    mask.resize();
-	fbMaterial.setUniforms();
-	fbMaterial.resize();
+    // mask.resize();
+	// fbMaterial.setUniforms();
+	// fbMaterial.resize();
 	console.log("W: " + renderSize.x + ", H: " +  renderSize.y);
 
 	// renderer.render(scene, camera);
@@ -163,15 +171,15 @@ function draw(){
 		r2 = 0.5;
 	}
 
-	if(effect.useMask){
-		mask.update();
-		alpha.needsUpdate = true;
-	}
-	fbMaterial.setUniforms();
-    fbMaterial.update();
+	// if(effect.useMask){
+		// mask.update();
+		// alpha.needsUpdate = true;
+	// }
+	// fbMaterial.setUniforms();
+    // fbMaterial.update();
 	renderer.render(scene, camera);
-	fbMaterial.getNewFrame();
-	fbMaterial.swapBuffers();
+	// fbMaterial.getNewFrame();
+	// fbMaterial.swapBuffers();
 }
 function dataURItoBlob(dataURI) {
     var byteString;
