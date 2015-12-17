@@ -1,0 +1,1 @@
+one way to crop to face would be to manually set offset-x and then draw to canvas using dataurl image from blackbox, then data url that
