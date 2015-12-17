@@ -49,6 +49,7 @@ function init(){
 	document.addEventListener( 'touchleave', onDocumentTouchEnd, false );
 	window.addEventListener("resize", onWindowResize);
 	// document.addEventListener("keydown", onKeyDown);
+	console.log("W: " + renderSize.x + ", H: " +  renderSize.y);
 	animate();
 
 }
@@ -140,6 +141,8 @@ function onWindowResize( event ) {
     mask.resize();
 	fbMaterial.setUniforms();
 	fbMaterial.resize();
+	console.log("W: " + renderSize.x + ", H: " +  renderSize.y);
+
 	// renderer.render(scene, camera);
 	// fbMaterial.getNewFrame();
 	// fbMaterial.swapBuffers();
