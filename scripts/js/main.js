@@ -1,11 +1,12 @@
 var container;
 var scene, camera, light, renderer;
-var renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
-if(window.innerWidth>3750*(window.innerHeight/2500)){
-    renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
-} else {
-    renderSize = new THREE.Vector2(3750*(window.innerHeight/2500), window.innerHeight);
-}       
+// var renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
+var renderSize = new THREE.Vector2(window.innerWidth, window.height);
+// if(window.innerWidth>3750*(window.innerHeight/2500)){
+    // renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
+// } else {
+    // renderSize = new THREE.Vector2(3750*(window.innerHeight/2500), window.innerHeight);
+// }       
 // var renderSize = new THREE.Vector2(window.innerWidth*0.25, 2500*(window.innerWidth*0.25/3750));
 // var renderSize = new THREE.Vector2(3750, 2500);
 var mouse = new THREE.Vector2(0.0,0.0);
@@ -60,8 +61,6 @@ function init(){
 }
 function createEffect(){
 
-	noise = THREE.ImageUtils.loadTexture("assets/textures/noise.png");
-	noise.minFilter = noise.magFilter = THREE.LinearFilter;
 
 	if(texture)texture.dispose();
 	texture = THREE.ImageUtils.loadTexture("assets/textures/test.jpg");
@@ -137,11 +136,12 @@ function onDocumentTouchEnd( event ) {
 	r2 = 0;
 }
 function onWindowResize( event ) {
-	if(window.innerWidth>3750*(window.innerHeight/2500)){
-	    renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
-	} else {
-	    renderSize = new THREE.Vector2(3750*(window.innerHeight/2500), window.innerHeight);
-	}       
+	// if(window.innerWidth>3750*(window.innerHeight/2500)){
+	    // renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
+	// } else {
+	    // renderSize = new THREE.Vector2(3750*(window.innerHeight/2500), window.innerHeight);
+	// }      
+	renderSize = new THREE.Vector2(window.innerWidth, window.innerHeight); 
 	renderer.setSize( renderSize.x, renderSize.y );
     camera.left = renderSize.x / - 2;
     camera.right = renderSize.x / 2;
@@ -172,49 +172,6 @@ function draw(){
 	renderer.render(scene, camera);
 	fbMaterial.getNewFrame();
 	fbMaterial.swapBuffers();
-}
-function onKeyDown(e){
-	console.log(e);
-	if(e.keyCode == '88'){
-		// mask.switchColor();
-		createNewEffect();
-	}
-	if(e.keyCode == '32'){
-		e.preventDefault();
-		// createNewEffect();
-		// fbMaterial.scale(3.0);
-		renderSize = new THREE.Vector2(3750, 2500);
-		camera.left = renderSize.x / - 2;
-		camera.right = renderSize.x / 2;
-		camera.top = renderSize.y / 2;
-		camera.bottom = renderSize.y / - 2;
-		renderer.setSize( renderSize.x, renderSize.y );
-		fbMaterial.setUniforms();
-		fbMaterial.resize();
-	    fbMaterial.update();
-	    renderer.render(scene, camera);
-	    fbMaterial.getNewFrame();
-	    fbMaterial.swapBuffers();
-		var blob = dataURItoBlob(renderer.domElement.toDataURL('image/jpg'));
-	    var file = window.URL.createObjectURL(blob);
-	    var img = new Image();
-	    img.src = file;
-        img.onload = function(e) {
-            window.open(this.src);
-        }
-		renderSize = new THREE.Vector2(window.innerWidth, 2500*(window.innerWidth/3750));
-		camera.left = renderSize.x / - 2;
-		camera.right = renderSize.x / 2;
-		camera.top = renderSize.y / 2;
-		camera.bottom = renderSize.y / - 2;
-		renderer.setSize( renderSize.x, renderSize.y );
-		fbMaterial.setUniforms();
-		fbMaterial.resize();
-	    fbMaterial.update();
-	    renderer.render(scene, camera);
-	    fbMaterial.getNewFrame();
-	    fbMaterial.swapBuffers();
-	}
 }
 function dataURItoBlob(dataURI) {
     var byteString;
