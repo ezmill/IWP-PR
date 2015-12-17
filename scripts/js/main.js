@@ -25,8 +25,8 @@ var effect;
 // ], effectIndex = 0;
 var texture;
 var fbMaterial;
-var origTex = THREE.ImageUtils.loadTexture("assets/textures/test.jpg");
-origTex.minFilter = origTex.magFilter = THREE.LinearFilter;
+// var origTex = THREE.ImageUtils.loadTexture("assets/textures/test.jpg");
+// origTex.minFilter = origTex.magFilter = THREE.LinearFilter;
 var nextEffectsSelector = document.getElementById("nextEffectsSelector");
 var currentEffectsSelector = document.getElementById("effectsSelector");
 init();
@@ -43,14 +43,22 @@ function init(){
 	container = document.getElementById( 'container' );
 	container.appendChild(renderer.domElement);
 
-	geometry = new THREE.PlaneBufferGeometry(renderSize.x, renderSize.y);
-	material = new THREE.MeshBasicMaterial({
-		map: THREE.ImageUtils.loadTexture("assets/textures/test.jpg")
-	})
-	// material.map.minFilter = material.map.magFilter = THREE.LinearFilter;
+	var img = new Image();
+	img.onload = function(){
+		tex = new THREE.Texture();
+		tex.image = img;
+		tex.minFilter = tex.magFilter = THREE.LinearFilter;
+		geometry = new THREE.PlaneBufferGeometry(renderSize.x, renderSize.y);
+		material = new THREE.MeshBasicMaterial({
+			map: tex
+		})
+		// material.map.minFilter = material.map.magFilter = THREE.LinearFilter;
 
-	mesh = new THREE.Mesh(geometry, material);
-	scene.add(mesh);
+		mesh = new THREE.Mesh(geometry, material);
+		scene.add(mesh);
+		tex.needsUpdate = true;
+	}
+	img.src = "assets/textures/test.jpg";
 	// createEffect();
 
 	document.addEventListener("mousemove", onMouseMove);
