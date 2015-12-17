@@ -23,7 +23,7 @@ function Mask(){
 		this.ctx.arc(this.mouse.x - this.radius/2, this.mouse.y - this.radius/2, this.radius, 0, 2 * Math.PI, false);
 		this.ctx.fillStyle = this.color;
 		this.ctx.shadowColor = this.color;
-		this.ctx.shadowBlur = this.radius;
+		this.ctx.shadowBlur = this.radius/2;
 		this.ctx.fill();   
 	}
 	this.switchColor = function(){
@@ -39,9 +39,5 @@ function Mask(){
 		this.ctx.rect(0,0, renderSize.x, renderSize.y);
 		this.ctx.fillStyle = 'black';
 		this.ctx.fill();	
-	}
-	this.resize = function(){
-		// this.canvas.width = renderSize.x;
-		// this.canvas.height = renderSize.y;
 	}
 }

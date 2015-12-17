@@ -6,6 +6,7 @@ function FeedbackMaterial(RENDERER, SCENE, CAMERA, TEXTURE, SHADERS){
     this.texture = TEXTURE;
     this.texture.minFilter = THREE.LinearFilter;
     this.texture.magFilter = THREE.LinearFilter;
+    this.mask
     this.shader1 = SHADERS[0];
     this.shader2 = SHADERS[1];
     this.shader3 = SHADERS[2];
@@ -61,7 +62,7 @@ function FeedbackMaterial(RENDERER, SCENE, CAMERA, TEXTURE, SHADERS){
         // this.setUniforms();
            // this.update();
 
-           // this.fbos[0].material.uniforms.texture.value = this.fbos[1].renderTarget; 
+           this.fbos[0].material.uniforms.texture.value = this.fbos[1].renderTarget; 
            // this.getNewFrame();
 
     }
@@ -76,6 +77,7 @@ function FeedbackMaterial(RENDERER, SCENE, CAMERA, TEXTURE, SHADERS){
         // this.fbo2.render(this.renderer, this.camera);
         this.fbos[1].render(this.renderer, this.camera);
         this.fbos[2].render(this.renderer, this.camera);
+        this.fbos[2].material.uniforms["texture"].value.needsUpdate = true;
 
         // this.fbo4.render(this.renderer, this.camera);
     }
@@ -107,7 +109,19 @@ function FeedbackMaterial(RENDERER, SCENE, CAMERA, TEXTURE, SHADERS){
           if(this.material.uniforms["alpha"])this.material.uniforms["alpha"].value = alpha;
           if(this.fbos[i].material.uniforms["mouse"])this.fbos[i].material.uniforms["mouse"].value = new THREE.Vector2(mouse.x, mouse.y);
           if(this.material.uniforms["mouse"])this.material.uniforms["mouse"].value = new THREE.Vector2(mouse.x, mouse.y);
+          if(this.material.uniforms["curveMap"])this.material.uniforms["curveMap"].value.needsUpdate = true;
+          // if(this.material.uniforms["mask"])this.material.uniforms["mask"].value.needsUpdate = true;
+          if(this.material.uniforms["mask"])this.material.uniforms["mask"].value = this.mask;
+
+          if(this.fbos[i].material.uniforms["origTex"])this.fbos[i].material.uniforms["origTex"].value = origTex;
+          if(this.material.uniforms["origTex"])this.material.uniforms["origTex"].value = origTex;
+          if(this.fbos[i].material.uniforms["seed"])this.fbos[i].material.uniforms["seed"].value = seed;
+          if(this.material.uniforms["seed"])this.material.uniforms["seed"].value = seed;
         }
+    }
+    this.setMask = function(tex){
+        this.mask = tex;
+        // origTex = this.fbos[2].renderTarget.clone();
     }
     this.dispose = function(){
         for(var i = 0; i < this.fbos.length; i++){

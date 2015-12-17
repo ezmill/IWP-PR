@@ -3,7 +3,6 @@ var StainedGlassShader = function(){
             {
                 "texture"  : { type: "t", value: null },
                 "origTex"  : { type: "t", value: null },
-                "value"  : { type: "f", value: 100.0 },
                 "alpha"  : { type: "t", value: null },
                 "mouse"  : { type: "v2", value: null },
                 "resolution"  : { type: "v2", value: null },
@@ -32,7 +31,6 @@ var StainedGlassShader = function(){
             "uniform vec2 resolution;",
             "uniform vec2 mouse;",
             "uniform float time;",
-            "uniform float value;",
             "varying vec2 vUv;",
 
             "float s;",
@@ -53,7 +51,7 @@ var StainedGlassShader = function(){
             "		c,-s,",
             "		s, c);",
             "}",
-            // "#define RES 100.0",
+            "#define RES 100.0",
             "vec4 voronoi2d(vec2 p,float t){",
             "	float v=8.0;",
             "	vec4 c;",
@@ -68,7 +66,7 @@ var StainedGlassShader = function(){
             "		float d=distance(p,f+vec2(i,j)+o);",
             "		if(d<v){",
             "			v=d;",
-            "			c=texture2D(texture,(f+vec2(i,j)+o)/value);",
+            "			c=texture2D(texture,(f+vec2(i,j)+o)/RES);",
             "		}",
             "	}",
             "	return c;",
@@ -79,7 +77,7 @@ var StainedGlassShader = function(){
             "	float r = resolution.x/resolution.y;",
             "	vec2 uv = vUv;",
 
-            "	vec4 c=voronoi2d(uv*value,t);",
+            "	vec4 c=voronoi2d(uv*RES,t);",
             "	vec3 col = texture2D(texture, vUv).rgb;",
             "	vec3 alpha = texture2D(alpha, vUv).rgb;",
 

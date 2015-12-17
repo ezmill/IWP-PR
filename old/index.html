@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title>IWP Effect Demo</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="focal-point.css"/>
+	<style>
+		body {
+			color: #fff;
+			font-family:Monospace;
+			font-size:13px;
+			margin: 0px;
+			text-align:center;
+			/*overflow: hidden;*/
+		}
+		#selectors{
+			position: absolute;
+			top: 0;
+			/*margin: 5px;*/
+			padding: 10px;
+			background: rgba(0,0,0,0.5); 
+		}
+		select{
+			display: block;
+			margin: 5px 0;
+		}
+		/*#container canvas{*/
+			/*width: 100vw;*/
+			/*height: 100vh;*/
+		/*}*/
+	</style>
+
+</head>
+<body>
+	<!-- <div class="focal-point portrait left-2 up-4"> -->
+		<div id="container"></div>		
+	<!-- </div> -->
+	<script src="scripts/js/three.min.js"></script>
+	<script src="scripts/js/CustomShaders2.js"></script>
+	<script src="scripts/js/Effects.js"></script>
+	<script src="scripts/js/FeedbackMaterial2.js"></script>
+	<script src="scripts/js/Mask.js"></script>
+    <script src="scripts/js/main.js"></script>
+</body>
+</html>
